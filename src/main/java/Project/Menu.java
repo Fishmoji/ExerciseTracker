@@ -1,7 +1,7 @@
 package Project;
 
-import java.io.Console;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class Menu {
 
@@ -72,6 +72,7 @@ public class Menu {
     }
     public static Console setAvatar(Console console) {
 
+
         return console;
     }
      public static Console profileSettings(Console console) {
@@ -88,9 +89,9 @@ public class Menu {
         do {
             System.out.println("Select option: ");
             System.out.println("--------------\n");
-            System.out.println("1 - All exercises");
-            System.out.println("2 - Edit exercises");
-            System.out.println("4 - New routine");
+       //     System.out.println("1 - All exercises");
+       //     System.out.println("2 - Edit exercises");
+            //    System.out.println("4 - New routine");
             System.out.println("0 - Exit");
 
 
@@ -157,7 +158,7 @@ public class Menu {
         do {
             System.out.println("Select option: ");
             System.out.println("--------------\n");
-            System.out.println("1 - Choose routine");
+        //  System.out.println("1 - Choose routine");
             System.out.println("2 - Choose exercise");
             System.out.println("3 - Finish session");
             System.out.println("0 - Exit");
