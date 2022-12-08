@@ -3,6 +3,8 @@ package Project;
 import java.io.*;
 import java.util.*;
 
+import static Project.exercises.chooseExercise;
+
 public class Menu {
 
     static Scanner scanner = new Scanner(System.in);
@@ -158,7 +160,7 @@ public class Menu {
         do {
             System.out.println("Select option: ");
             System.out.println("--------------\n");
-        //  System.out.println("1 - Choose routine");
+            System.out.println("1 - Choose routine");
             System.out.println("2 - Choose exercise");
             System.out.println("3 - Finish session");
             System.out.println("0 - Exit");
@@ -170,7 +172,7 @@ public class Menu {
             switch (selection) {
                 case 1:
                     break;
-                case 2:
+                case 2: chooseExercise(console);
                     break;
                 case 3:
                     break;

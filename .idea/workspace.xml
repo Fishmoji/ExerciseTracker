@@ -5,8 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74b646ca-cd46-45a9-abaf-cb2e804ba294" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Project/JDBC.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Project/exercises.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Login.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Project/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exercisetracker/HelloApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/exercisetracker/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/exercisetracker/hello-view.fxml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +45,10 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Goji/IdeaProjects/ExerciseTracker/src/main/java"
+    "last_opened_file_path": "C:/Users/Goji/IdeaProjects/ExerciseTracker",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -44,7 +56,33 @@
       <recent name="C:\Users\Goji\IdeaProjects\ExerciseTracker\src\main\java" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="JDBC" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Project.JDBC" />
+      <module name="ExerciseTracker" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Project.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Login" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Project.Login" />
+      <module name="ExerciseTracker" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Project.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Project.Main" />
       <module name="ExerciseTracker" />
@@ -61,6 +99,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.JDBC" />
+        <item itemvalue="Application.Login" />
       </list>
     </recent_temporary>
   </component>
