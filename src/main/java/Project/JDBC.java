@@ -10,7 +10,7 @@ public class JDBC {
 
          String jdbcURL = "jdbc:mysql://localhost:3306/exercisetracker";
          String username = "root";
-         String password = "Kakajunn006!";
+         String password = "12345678Java!";
         try{
             Connection connection = DriverManager.getConnection(jdbcURL, username, password);
 

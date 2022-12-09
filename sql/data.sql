@@ -1,4 +1,4 @@
-CREATE TABLE users (
+CREATE TABLE users(
     userID int NOT NULL AUTO_INCREMENT,
     email VARCHAR(150) NOT NULL,
     password VARCHAR(12) NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE users (
     FOREIGN KEY (userID) REFERENCES users(userID)
     );
     
-    INSERT INTO xptracker (lastupdate, score) VALUES ('00/00/00', '0')
+    INSERT INTO xptracker (lastupdate, score) VALUES ('00/00/00', '0');
     
         SELECT * FROM XPtracker;
     

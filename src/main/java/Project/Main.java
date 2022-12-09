@@ -2,6 +2,7 @@ package Project;
 
 import java.io.*;
 import java.sql.*;
+import java.util.Scanner;
 // TODO
 // make both Console and Connection work together without errors
 // check chooseExercise method and if it works
@@ -16,19 +17,21 @@ import java.sql.*;
 
 import static Project.Menu.mainMenu;
 
+
 public class Main {
+    public static String jdbcURL = "jdbc:mysql://localhost:3306/exerciseTracker";
+    public static String username = "root";
+    public static String password = "12345678Java!";
+    public static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) throws SQLException {
 
-        Console console = System.console();
-        console = mainMenu(console);
-        System.out.println("Application has been shut down");
+//        Console console = System.console();
+//        console = (Console) mainMenu();
+//        System.out.println("Application has been shut down");
 
+        mainMenu();
 
-        String jdbcURL = "jdbc:mysql://localhost:3306/exercisetracker";
-        String username = "root";
-        String password = "Kakajunn006!";
-        try{
-            Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+        try(Connection connection = DriverManager.getConnection(jdbcURL, username, password)){
 
             if (connection != null){
                 System.out.println("Connected to the database");
@@ -40,4 +43,37 @@ public class Main {
             e.printStackTrace();
         }
     }
+
+    public static int choiceFromTo( int number, int num){
+        int choice;
+        do {
+            choice = validatesInputNumber();
+            if ((choice < number) || (choice > num)) {
+                System.out.println("There is no such option.");
+
+            }
+        }while ((choice < number) || (choice > num));
+
+        return choice;
+    }
+
+
+    //checks input for a number
+    public static int validatesInputNumber() {
+        int numb;
+        int number = 0;
+        do {
+            numb = 0;
+            try {
+                number = scanner.nextInt();
+            } catch (Exception e) {
+                System.out.printf("%s - is not an integer.%n", scanner.next());
+                numb = 1;
+            }
+        } while (numb == 1);
+
+        return number;
+    }
+
+
 }
