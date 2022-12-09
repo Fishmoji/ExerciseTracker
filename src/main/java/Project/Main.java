@@ -4,7 +4,7 @@ import java.io.*;
 import java.sql.*;
 import java.util.Scanner;
 // TODO
-// make both Console and Connection work together without errors
+// SQL ERROR - Menu.StartExercises
 // check chooseExercise method and if it works
 // adjust/add System out print texts where applicable
 // method to tell user how many points were acquired during last session
@@ -19,9 +19,9 @@ import static Project.Menu.mainMenu;
 
 
 public class Main {
-    public static String jdbcURL = "jdbc:mysql://localhost:3306/exerciseTracker";
+    public static String jdbcURL = "jdbc:mysql://localhost:3306/exercisetracker";
     public static String username = "root";
-    public static String password = "12345678Java!";
+    public static String password = "Kakajunn006!";
     public static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) throws SQLException {
 
@@ -31,6 +31,7 @@ public class Main {
 
         mainMenu();
 
+//<<<<<<< Updated upstream
         try(Connection connection = DriverManager.getConnection(jdbcURL, username, password)){
 
             if (connection != null){
@@ -42,6 +43,8 @@ public class Main {
         }catch (Exception e){
             e.printStackTrace();
         }
+//=======
+//>>>>>>> Stashed changes
     }
 
     // TODO correct validation

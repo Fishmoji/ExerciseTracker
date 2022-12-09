@@ -119,11 +119,8 @@ public class Menu {
                 switch (selection) {
                     case 1:
                         chooseExercise(connection);
-                        startExercise();
                         break;
                     case 2:
-                        break;
-                    case 3:
                         break;
                     case 0:
                         mainMenu();
@@ -142,9 +139,9 @@ public class Menu {
 
     public static void chooseExercise(Connection connection) throws SQLException {
         Statement insertItemStatement = connection.createStatement();
-        String insertEasyPoints = "INSERT INTO tracker (lastupdate, pointsGranted) VALUES (now(), 10)";
-        String insertMediumPoints = "INSERT INTO tracker (lastupdate, pointsGranted) VALUES (now(), 15)";
-        String insertHardPoints = "INSERT INTO tracker (lastupdate, pointsGranted) VALUES (now(), 20)";
+        String insertEasyPoints = "INSERT INTO tracker (pointsGranted) VALUES (10)";
+        String insertMediumPoints = "INSERT INTO tracker (pointsGranted) VALUES (15)";
+        String insertHardPoints = "INSERT INTO tracker (pointsGranted) VALUES (20)";
 
         System.out.println("[1] - push-up - [E] - x5 - [M] - x15 - [H] - x25");
         System.out.println("[2] - pull-up - [E] - x5 - [M] - x15 - [H] - x25");

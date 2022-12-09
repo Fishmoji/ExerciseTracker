@@ -8,20 +8,25 @@ import java.sql.Statement;
 public class JDBC {
     public static void main(String[] args) {
 
-         String jdbcURL = "jdbc:mysql://localhost:3306/exercisetracker";
-         String username = "root";
-         String password = "12345678Java!";
         try{
-            Connection connection = DriverManager.getConnection(jdbcURL, username, password);
 
-        if (connection != null){
-            System.out.println("Connected to the database");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/exercisetracker", "root","Kakajunn006!");
 
-            connection.close();
+            Statement stmt = con.createStatement();
+            ResultSet result = stmt.executeQuery("SELECT * FROM tracker");
 
+            while (result.next()){
+                System.out.println(result.getInt(1) + " " + result.getString(2) + " " + result.getInt(3));
             }
+
+            con.close();
+
         }catch (Exception e){
-         e.printStackTrace();
+            System.out.println(e);
         }
+
+
     }
 }
