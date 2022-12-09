@@ -21,7 +21,7 @@ import static Project.Menu.mainMenu;
 public class Main {
     public static String jdbcURL = "jdbc:mysql://localhost:3306/exerciseTracker";
     public static String username = "root";
-    public static String password = "12345678Java!";
+    public static String password = "Kakajunn006!";
     public static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) throws SQLException {
 
