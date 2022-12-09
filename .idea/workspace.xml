@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="74b646ca-cd46-45a9-abaf-cb2e804ba294" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/data.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Project/JDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/JDBC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Project/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Project/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Menu.java" afterDir="false" />
@@ -115,10 +113,33 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Project/Menu.java</url>
+          <line>161</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

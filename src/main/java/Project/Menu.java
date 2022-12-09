@@ -1,8 +1,6 @@
 package Project;
 
 import color.Color;
-
-import java.io.Console;
 import java.sql.*;
 import java.util.*;
 
@@ -11,6 +9,8 @@ public class Menu {
 
     static Scanner scanner = new Scanner(System.in);
     static int selection;
+
+    static int sum = 0;
 
     public static void mainMenu() throws SQLException {
         System.out.println("Welcome to the exercise tracker");
@@ -82,20 +82,14 @@ public class Menu {
 
     public static void totalPoints(Connection connection) throws SQLException {
 
-        Statement readItemStatement = connection.prepareStatement();
-        String readItemsQuery = "SELECT SUM(pointsGranted) FROM tracker";
-        ResultSet rs = readItemStatement.executeQuery(readItemsQuery);
+        Statement st = connection.createStatement();
+        ResultSet res = st.executeQuery("SELECT SUM(pointsGranted) as pointsSum FROM tracker");
 
-        while (rs.next()) {
-            int numberOfID=rs.getInt("activityID");
-            String lastUpdate =rs.getString("lastupdate");
-            int pointGrandet =rs.getInt("pointsGranted");
-
-            System.out.println(numberOfID+"\n"+
-                    lastUpdate+"\n"+
-                    pointGrandet+"\n");
-
+        while (res.next()) {
+            int pointsSum = res.getInt(1);
+            sum = sum + pointsSum;
         }
+        System.out.println("Total point count: " + sum);
     }
 
     public static void goals() {
