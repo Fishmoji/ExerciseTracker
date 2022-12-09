@@ -50,7 +50,9 @@ public class Menu {
                 System.out.println("Select option: ");
                 System.out.println(" ");
                 System.out.println("1 - Points");
-                System.out.println("2 - Goals");
+                System.out.println("2 - Go to exercise menu");
+
+                //  System.out.println("2 - Goals");
                 System.out.println("0 - Exit");
 
 
@@ -59,7 +61,7 @@ public class Menu {
 
                 switch (selection) {
                     case 1 -> totalPoints(connection);
-                    case 2 -> goals();
+                    case 2 -> startExercise();
                     case 0 -> mainMenu();
                     default -> System.out.println("Selection invalid");
                 }
@@ -83,12 +85,12 @@ public class Menu {
             int pointsSum = res.getInt(1);
             sum = sum + pointsSum;
         }
-        System.out.println("Total point count: " + sum);
+        System.out.println("\nTotal point count: " + sum);
     }
 
-    public static void goals() {
+  /*  public static void goals() {
         return;
-    }
+    } */
 
     public static void startExercise() {
 
@@ -98,7 +100,7 @@ public class Menu {
                 System.out.println("Let's start exercising");
                 System.out.println(" ");
                 System.out.println("1 - Choose exercise");
-                System.out.println("2 - Finish session");
+                System.out.println("2 - See total score");
                 System.out.println("0 - Exit");
 
 
@@ -110,9 +112,7 @@ public class Menu {
                         chooseExercise();
                         startExercise();
                         break;
-                    case 2:
-                        break;
-                    case 3:
+                    case 2: totalPoints(connection);
                         break;
                     case 0:
                         mainMenu();
@@ -172,7 +172,7 @@ public class Menu {
                 //ask what exercise did you do
                 boolean select=false;
                 do {
-                    System.out.println("Choose an exercise.");
+                    System.out.println("Choose an exercise");
                     nextExercise = Main.scanner.next();
                     for (String exercise: id) {
                         if (nextExercise.equals(exercise)){
@@ -186,7 +186,7 @@ public class Menu {
                 //asking for physical activity
                 select=false;
                 do {
-                    System.out.println("Choose an grade of physical activity.");
+                    System.out.println("Choose difficulty");
                     nextDifficulty = Main.scanner.next();
                     for (String grade: physicalExercise) {
                         if (nextDifficulty.toUpperCase().equals(grade)){
@@ -213,11 +213,11 @@ public class Menu {
             }
 
             do {
-                System.out.println("Would you like to add more y/n");
+                System.out.println("Add another exercise? - y/n");
                 choice = Main.scanner.next().toLowerCase().charAt(0);
 
                 if (choice != 'y' && choice != 'n') {
-                    System.out.println("Choose the right option");
+                    System.out.println("Choose a valid option");
                 }
             } while (choice != 'n' && choice != 'y');
 
