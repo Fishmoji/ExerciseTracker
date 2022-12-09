@@ -17,8 +17,9 @@ public class Menu {
 
 
         do {
-            System.out.println("MAIN MENU");
             System.out.println("--------------\n");
+            System.out.println("MAIN MENU");
+            System.out.println(" ");
             System.out.println("[1] - Profile");
             System.out.println("[2] - Log exercise");
             System.out.println("[0] - Exit");
@@ -45,8 +46,9 @@ public class Menu {
         try (Connection connection = DriverManager.getConnection(Main.jdbcURL, Main.username, Main.password)) {
             do {
 
-                System.out.println("Select option: ");
                 System.out.println("--------------\n");
+                System.out.println("Select option: ");
+                System.out.println(" ");
                 System.out.println("1 - Points");
                 System.out.println("2 - Goals");
                 System.out.println("0 - Exit");
@@ -100,8 +102,9 @@ public class Menu {
 
         try(Connection connection = DriverManager.getConnection(Main.jdbcURL, Main.username, Main.password)) {
             do {
-                System.out.println("Let's start exercising");
                 System.out.println("--------------\n");
+                System.out.println("Let's start exercising");
+                System.out.println(" ");
                 System.out.println("1 - Choose exercise");
                 System.out.println("2 - Finish session");
                 System.out.println("0 - Exit");
@@ -112,7 +115,7 @@ public class Menu {
 
                 switch (selection) {
                     case 1:
-                        chooseExercise(connection);
+                        chooseExercise();
                         startExercise();
                         break;
                     case 2:
@@ -134,42 +137,63 @@ public class Menu {
 
     }
 
-    public static void chooseExercise(Connection connection) throws SQLException {
-        Statement insertItemStatement = connection.createStatement();
-        String insertEasyPoints = "INSERT INTO tracker (pointsGranted) VALUES (10)";
-        String insertMediumPoints = "INSERT INTO tracker (pointsGranted) VALUES (15)";
-        String insertHardPoints = "INSERT INTO tracker (pointsGranted) VALUES (20)";
+    public static void chooseExercise() throws SQLException {
+            char choice = 0;
+            do {
+                try (Connection connection = DriverManager.getConnection(Main.jdbcURL, Main.username, Main.password)) {
+                    Statement insertItemStatement = connection.createStatement();
+                    String insertEasyPoints = "INSERT INTO tracker (pointsGranted) VALUES (10)";
+                    String insertMediumPoints = "INSERT INTO tracker (pointsGranted) VALUES (15)";
+                    String insertHardPoints = "INSERT INTO tracker (pointsGranted) VALUES (20)";
 
-        System.out.println("[1] - push-up - [E] - x5 - [M] - x15 - [H] - x25");
-        System.out.println("[2] - pull-up - [E] - x5 - [M] - x15 - [H] - x25");
-        System.out.println("[3] - lunge - [E] - x5 - [M] - x15 - [H] - x25");
-        System.out.println("[4] - plank - [E] - x5 - [M] - x15 - [H] - x25");
-        System.out.println("[5] - squat - [E] - x5 - [M] - x15 - [H] - x25");
-        System.out.println("[6] - mountain climber - [E] - x5 - [M] - x15 - [H] - x25");
-        System.out.println("[7] - burpee - [E] - x5 - [M] - x15 - [H] - x25");
-        System.out.println("[8] - inchworm - [E] - x5 - [M] - x15 - [H] - x25");
-        System.out.println("[9] - russian twist - [E] - x5 - [M] - x15 - [H] - x25");
+                    System.out.println("[1] - push-up - [E] - x5 - [M] - x15 - [H] - x25");
+                    System.out.println("[2] - pull-up - [E] - x5 - [M] - x15 - [H] - x25");
+                    System.out.println("[3] - lunge - [E] - x5 - [M] - x15 - [H] - x25");
+                    System.out.println("[4] - plank - [E] - x5 - [M] - x15 - [H] - x25");
+                    System.out.println("[5] - squat - [E] - x5 - [M] - x15 - [H] - x25");
+                    System.out.println("[6] - mountain climber - [E] - x5 - [M] - x15 - [H] - x25");
+                    System.out.println("[7] - burpee - [E] - x5 - [M] - x15 - [H] - x25");
+                    System.out.println("[8] - inchworm - [E] - x5 - [M] - x15 - [H] - x25");
+                    System.out.println("[9] - russian twist - [E] - x5 - [M] - x15 - [H] - x25");
 
-        String nextExercise = scanner.next();
-        String nextDifficulty = scanner.next();
+                    String nextExercise = Main.scanner.next();
+                    String nextDifficulty = Main.scanner.next();
 
-        if (nextExercise.equals("1") || nextExercise.equals("2") || nextExercise.equals("3") || nextExercise.equals("4")
-                || nextExercise.equals("5") || nextExercise.equals("6") || nextExercise.equals("7")
-                || nextExercise.equals("8") || nextExercise.equals("9") && nextDifficulty.equals("E")) {
-            insertItemStatement.executeUpdate(insertEasyPoints);
+                    if (nextExercise.equals("1") || nextExercise.equals("2") || nextExercise.equals("3") || nextExercise.equals("4")
+                            || nextExercise.equals("5") || nextExercise.equals("6") || nextExercise.equals("7")
+                            || nextExercise.equals("8") || nextExercise.equals("9") && nextDifficulty.equals("E")) {
+                        insertItemStatement.executeUpdate(insertEasyPoints);
 
 
-        } else if (nextExercise.equals("1") || nextExercise.equals("2") || nextExercise.equals("3") || nextExercise.equals("4")
-                || nextExercise.equals("5") || nextExercise.equals("6") || nextExercise.equals("7")
-                || nextExercise.equals("8") || nextExercise.equals("9") && nextDifficulty.equals("M")) {
-            insertItemStatement.executeUpdate(insertMediumPoints);
-        } else if
-        (nextExercise.equals("1") || nextExercise.equals("2") || nextExercise.equals("3") || nextExercise.equals("4")
-                        || nextExercise.equals("5") || nextExercise.equals("6") || nextExercise.equals("7")
-                        || nextExercise.equals("8") || nextExercise.equals("9") && nextDifficulty.equals("H")) {
-            insertItemStatement.executeUpdate(insertHardPoints);
+                    } else if (nextExercise.equals("1") || nextExercise.equals("2") || nextExercise.equals("3") || nextExercise.equals("4")
+                            || nextExercise.equals("5") || nextExercise.equals("6") || nextExercise.equals("7")
+                            || nextExercise.equals("8") || nextExercise.equals("9") && nextDifficulty.equals("M")) {
+                        insertItemStatement.executeUpdate(insertMediumPoints);
+                    } else if
+                    (nextExercise.equals("1") || nextExercise.equals("2") || nextExercise.equals("3") || nextExercise.equals("4")
+                                    || nextExercise.equals("5") || nextExercise.equals("6") || nextExercise.equals("7")
+                                    || nextExercise.equals("8") || nextExercise.equals("9") && nextDifficulty.equals("H")) {
+                        insertItemStatement.executeUpdate(insertHardPoints);
+
+
+                    }
+                } catch (SQLException e) {
+                    System.out.println(Color.ANSI_YELLOW + "SQL ERROR - Menu.ProfileMenu()" + Color.ANSI_RESET);
+                    e.printStackTrace();
+
+                }
+
+
+                do {
+                    System.out.println("Would you like to do another one? - y/n");
+                    choice = Main.scanner.next().charAt(0);
+
+                    if (choice != 'y' && choice != 'n') {
+                        System.out.println("Choose the right option");
+                    }
+                } while (choice != 'n' && choice != 'y');
+
+            } while (choice != 'n');
         }
-        return;
-    }
 
 }

@@ -28,10 +28,15 @@ public class Main {
 //        Console console = System.console();
 //        console = (Console) mainMenu();
 //        System.out.println("Application has been shut down");
+        try(Connection connection = DriverManager.getConnection(jdbcURL, username, password)){
 
+        // dropTable(connection);
+            createTable(connection);
+        }
         mainMenu();
 
         try(Connection connection = DriverManager.getConnection(jdbcURL, username, password)){
+
 
             if (connection != null){
                 System.out.println("Connected to the database");
@@ -42,6 +47,21 @@ public class Main {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+  /*  public static void dropTable(Connection con) throws SQLException {
+        Statement dropStatement =  con.createStatement();
+        dropStatement.execute("DROP TABLE IF EXISTS tracker");
+    } */
+    public static void createTable(Connection con) throws SQLException{
+
+        Statement createTableStatement = con.createStatement();
+        String createTableQuery = "CREATE TABLE IF NOT EXISTS tracker ("+
+                "activityID INT NOT NULL AUTO_INCREMENT, "+
+                "lastupdate DATETIME DEFAULT CURRENT_TIMESTAMP, "+
+                "pointsGranted INT, "+
+                "PRIMARY KEY (activityID))";
+        createTableStatement.execute(createTableQuery);
     }
 
     // TODO correct validation
