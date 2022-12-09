@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="74b646ca-cd46-45a9-abaf-cb2e804ba294" name="Changes" comment="">
+    <list default="true" id="74b646ca-cd46-45a9-abaf-cb2e804ba294" name="Changes" comment="create table addition at start">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/JDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/JDBC.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Project/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Project/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Project/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,6 +106,14 @@
       <option name="presentableId" value="Default" />
       <updated>1669473288308</updated>
     </task>
+    <task id="LOCAL-00001" summary="create table addition at start">
+      <created>1670627865431</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1670627865431</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -130,5 +138,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="create table addition at start" />
+    <option name="LAST_COMMIT_MESSAGE" value="create table addition at start" />
   </component>
 </project>

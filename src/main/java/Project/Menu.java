@@ -58,18 +58,10 @@ public class Menu {
                 selection = scanner.nextInt();
 
                 switch (selection) {
-                    case 1:
-                        totalPoints(connection);
-                        break;
-                    case 2:
-                        goals();
-                        break;
-                    case 0:
-                        mainMenu();
-                        break;
-                    default:
-                        System.out.println("Selection invalid");
-                        break;
+                    case 1 -> totalPoints(connection);
+                    case 2 -> goals();
+                    case 0 -> mainMenu();
+                    default -> System.out.println("Selection invalid");
                 }
             }
             while (selection != 3);
@@ -146,54 +138,90 @@ public class Menu {
                     String insertMediumPoints = "INSERT INTO tracker (pointsGranted) VALUES (15)";
                     String insertHardPoints = "INSERT INTO tracker (pointsGranted) VALUES (20)";
 
-                    System.out.println("[1] - push-up - [E] - x5 - [M] - x15 - [H] - x25");
-                    System.out.println("[2] - pull-up - [E] - x5 - [M] - x15 - [H] - x25");
-                    System.out.println("[3] - lunge - [E] - x5 - [M] - x15 - [H] - x25");
-                    System.out.println("[4] - plank - [E] - x5 - [M] - x15 - [H] - x25");
-                    System.out.println("[5] - squat - [E] - x5 - [M] - x15 - [H] - x25");
-                    System.out.println("[6] - mountain climber - [E] - x5 - [M] - x15 - [H] - x25");
-                    System.out.println("[7] - burpee - [E] - x5 - [M] - x15 - [H] - x25");
-                    System.out.println("[8] - inchworm - [E] - x5 - [M] - x15 - [H] - x25");
-                    System.out.println("[9] - russian twist - [E] - x5 - [M] - x15 - [H] - x25");
-
-                    String nextExercise = Main.scanner.next();
-                    String nextDifficulty = Main.scanner.next();
-
-                    if (nextExercise.equals("1") || nextExercise.equals("2") || nextExercise.equals("3") || nextExercise.equals("4")
-                            || nextExercise.equals("5") || nextExercise.equals("6") || nextExercise.equals("7")
-                            || nextExercise.equals("8") || nextExercise.equals("9") && nextDifficulty.equals("E")) {
-                        insertItemStatement.executeUpdate(insertEasyPoints);
+                System.out.println("[1] - push-up - [E] - x5 - [M] - x15 - [H] - x25");
+                System.out.println("[2] - pull-up - [E] - x5 - [M] - x15 - [H] - x25");
+                System.out.println("[3] - lunge - [E] - x5 - [M] - x15 - [H] - x25");
+                System.out.println("[4] - plank - [E] - x5 - [M] - x15 - [H] - x25");
+                System.out.println("[5] - squat - [E] - x5 - [M] - x15 - [H] - x25");
+                System.out.println("[6] - mountain climber - [E] - x5 - [M] - x15 - [H] - x25");
+                System.out.println("[7] - burpee - [E] - x5 - [M] - x15 - [H] - x25");
+                System.out.println("[8] - inchworm - [E] - x5 - [M] - x15 - [H] - x25");
+                System.out.println("[9] - russian twist - [E] - x5 - [M] - x15 - [H] - x25");
 
 
-                    } else if (nextExercise.equals("1") || nextExercise.equals("2") || nextExercise.equals("3") || nextExercise.equals("4")
-                            || nextExercise.equals("5") || nextExercise.equals("6") || nextExercise.equals("7")
-                            || nextExercise.equals("8") || nextExercise.equals("9") && nextDifficulty.equals("M")) {
-                        insertItemStatement.executeUpdate(insertMediumPoints);
-                    } else if
-                    (nextExercise.equals("1") || nextExercise.equals("2") || nextExercise.equals("3") || nextExercise.equals("4")
-                                    || nextExercise.equals("5") || nextExercise.equals("6") || nextExercise.equals("7")
-                                    || nextExercise.equals("8") || nextExercise.equals("9") && nextDifficulty.equals("H")) {
-                        insertItemStatement.executeUpdate(insertHardPoints);
+                List<String> id = new ArrayList<>();
+                id.add("1");
+                id.add("2");
+                id.add("3");
+                id.add("4");
+                id.add("5");
+                id.add("6");
+                id.add("7");
+                id.add("8");
+                id.add("9");
 
+                List<String> physicalExercise = new ArrayList<>();
+                physicalExercise.add("E");
+                physicalExercise.add("M");
+                physicalExercise.add("H");
 
-                    }
-                } catch (SQLException e) {
-                    System.out.println(Color.ANSI_YELLOW + "SQL ERROR - Menu.ProfileMenu()" + Color.ANSI_RESET);
-                    e.printStackTrace();
+                // variables
+                String nextExercise;
+                String nextDifficulty ;
 
-                }
-
-
+                //ask what exercise did you do
+                boolean select=false;
                 do {
-                    System.out.println("Would you like to do another one? - y/n");
-                    choice = Main.scanner.next().charAt(0);
-
-                    if (choice != 'y' && choice != 'n') {
-                        System.out.println("Choose the right option");
+                    System.out.println("Choose an exercise.");
+                    nextExercise = Main.scanner.next();
+                    for (String exercise: id) {
+                        if (nextExercise.equals(exercise)){
+                            select =true;
+                        }
                     }
-                } while (choice != 'n' && choice != 'y');
+                }while (!select);
 
-            } while (choice != 'n');
-        }
+
+
+                //asking for physical activity
+                select=false;
+                do {
+                    System.out.println("Choose an grade of physical activity.");
+                    nextDifficulty = Main.scanner.next();
+                    for (String grade: physicalExercise) {
+                        if (nextDifficulty.toUpperCase().equals(grade)){
+                            select =true;
+                        }
+                    }
+                }while (!select);
+
+                // Grade goes to data
+                if (nextDifficulty.equals(physicalExercise.get(0))) {
+                    insertItemStatement.executeUpdate(insertEasyPoints);
+                } else if (nextDifficulty.equals(physicalExercise.get(1))) {
+                    insertItemStatement.executeUpdate(insertMediumPoints);
+                } else {
+                    insertItemStatement.executeUpdate(insertHardPoints);
+                }
+                totalPoints(connection);
+
+
+            } catch(SQLException e){
+                System.out.println(Color.ANSI_YELLOW + "SQL ERROR - Menu.ProfileMenu()" + Color.ANSI_RESET);
+                e.printStackTrace();
+
+            }
+
+            do {
+                System.out.println("Would you like to add more y/n");
+                choice = Main.scanner.next().toLowerCase().charAt(0);
+
+                if (choice != 'y' && choice != 'n') {
+                    System.out.println("Choose the right option");
+                }
+            } while (choice != 'n' && choice != 'y');
+
+        } while(choice !='n');
+    }
 
 }
