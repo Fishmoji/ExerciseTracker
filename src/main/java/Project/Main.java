@@ -44,6 +44,7 @@ public class Main {
         }
     }
 
+    // TODO correct validation
     public static int choiceFromTo( int number, int num){
         int choice;
         do {
@@ -56,7 +57,6 @@ public class Main {
 
         return choice;
     }
-
 
     //checks input for a number
     public static int validatesInputNumber() {
