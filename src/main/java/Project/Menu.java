@@ -1,16 +1,20 @@
 package Project;
 
+import color.Color;
+
 import java.io.Console;
 import java.sql.*;
 import java.util.*;
+
 
 public class Menu {
 
     static Scanner scanner = new Scanner(System.in);
     static int selection;
 
-    public static Object mainMenu(Console console) throws SQLException {
+    public static void mainMenu() throws SQLException {
         System.out.println("Welcome to the exercise tracker");
+
 
         do {
             System.out.println("MAIN MENU");
@@ -20,12 +24,14 @@ public class Menu {
             System.out.println("[0] - Exit");
 
             System.out.print("Insert selection: ");
-            selection = scanner.nextInt();
+            selection=Main.choiceFromTo(0,2);
 
             switch (selection) {
-                case 1: profileMenu(console);
+                case 1:
+                    profileMenu();
                     break;
-                case 2: startExercise(console);
+                case 2:
+                    startExercise();
                     break;
                 case 0:
                     break;
@@ -33,39 +39,47 @@ public class Menu {
                     System.out.println("The selection was invalid!");
             }
         } while (selection != 0);
-        return console;
     }
 
-    public static void profileMenu(Console console, Connection connection) throws SQLException {
+    public static void profileMenu() {
+        try (Connection connection = DriverManager.getConnection(Main.jdbcURL, Main.username, Main.password)) {
+            do {
 
-        do {
-
-            System.out.println("Select option: ");
-            System.out.println("--------------\n");
-            System.out.println("1 - Points");
-            System.out.println("2 - Goals");
-            System.out.println("0 - Exit");
+                System.out.println("Select option: ");
+                System.out.println("--------------\n");
+                System.out.println("1 - Points");
+                System.out.println("2 - Goals");
+                System.out.println("0 - Exit");
 
 
-            System.out.print("Insert selection: ");
-            selection = scanner.nextInt();
+                System.out.print("Insert selection: ");
+                selection = scanner.nextInt();
 
-            switch (selection) {
-                case 1: totalPoints(connection);
-                    break;
-                case 2: goals(console);
-                    break;
-                case 0: mainMenu(console);
-                    break;
-                default:
-                    System.out.println("Selection invalid");
-                    break;
+                switch (selection) {
+                    case 1:
+                        totalPoints(connection);
+                        break;
+                    case 2:
+                        goals();
+                        break;
+                    case 0:
+                        mainMenu();
+                        break;
+                    default:
+                        System.out.println("Selection invalid");
+                        break;
+                }
             }
+            while (selection != 3);
+
+        } catch (SQLException e) {
+            System.out.println(Color.ANSI_YELLOW+"SQL ERROR - Menu.ProfileMenu()"+ Color.ANSI_RESET);
+            e.printStackTrace();
+
         }
-        while (selection != 3);
-        return;
 
     }
+
     public static void totalPoints(Connection connection) throws SQLException {
 
         Statement readItemStatement = connection.createStatement();
@@ -73,46 +87,56 @@ public class Menu {
         ResultSet rs = readItemStatement.executeQuery(readItemsQuery);
 
         while (rs.next()) {
-            rs.getInt("activityID");
-            rs.getString("lastupdate");
-            rs.getInt("pointsGranted");
+            int numberOfID=rs.getInt("activityID");
+            String lastUpdate =rs.getString("lastupdate");
+            int pointGrandet =rs.getInt("pointsGranted");
+
+            System.out.println(numberOfID+"\n"+
+                    lastUpdate+"\n"+
+                    pointGrandet+"\n");
 
         }
     }
-    public static void goals(Console console) {
+
+    public static void goals() {
         return;
-     }
+    }
 
-    public static void startExercise(Console console, Connection connection) throws SQLException {
+    public static void startExercise() {
 
-        do {
-            System.out.println("Let's start exercising");
-            System.out.println("--------------\n");
-            System.out.println("1 - Choose exercise");
-            System.out.println("2 - Finish session");
-            System.out.println("0 - Exit");
+        try(Connection connection = DriverManager.getConnection(Main.jdbcURL, Main.username, Main.password)) {
+            do {
+                System.out.println("Let's start exercising");
+                System.out.println("--------------\n");
+                System.out.println("1 - Choose exercise");
+                System.out.println("2 - Finish session");
+                System.out.println("0 - Exit");
 
 
-            System.out.print("Insert selection: ");
-            selection = scanner.nextInt();
+                System.out.print("Insert selection: ");
+                selection = scanner.nextInt();
 
-            switch (selection) {
-                case 1:
-                    chooseExercise(connection);
-                    break;
-                case 2:
-                    break;
-                case 3:
-                    break;
-                case 0: mainMenu(console);
-                    break;
-                default:
-                    System.out.println("Selection invalid");
-                    break;
+                switch (selection) {
+                    case 1:
+                        chooseExercise(connection);
+                        startExercise();
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 0:
+                        mainMenu();
+                        break;
+                    default:
+                        System.out.println("Selection invalid");
+                        break;
+                }
             }
+            while (selection != 3);
+        }catch (SQLException e){
+            System.out.println(Color.ANSI_YELLOW+"SQL ERROR - Menu.StartExercise()"+Color.ANSI_RESET);
         }
-        while (selection != 3);
-        return;
 
     }
 
@@ -141,15 +165,11 @@ public class Menu {
             insertItemStatement.executeUpdate(insertEasyPoints);
 
 
-        }
-
-        else if (nextExercise.equals("1") || nextExercise.equals("2") || nextExercise.equals("3") || nextExercise.equals("4")
+        } else if (nextExercise.equals("1") || nextExercise.equals("2") || nextExercise.equals("3") || nextExercise.equals("4")
                 || nextExercise.equals("5") || nextExercise.equals("6") || nextExercise.equals("7")
                 || nextExercise.equals("8") || nextExercise.equals("9") && nextDifficulty.equals("M")) {
             insertItemStatement.executeUpdate(insertMediumPoints);
-        }
-
-        else if
+        } else if
         (nextExercise.equals("1") || nextExercise.equals("2") || nextExercise.equals("3") || nextExercise.equals("4")
                         || nextExercise.equals("5") || nextExercise.equals("6") || nextExercise.equals("7")
                         || nextExercise.equals("8") || nextExercise.equals("9") && nextDifficulty.equals("H")) {
