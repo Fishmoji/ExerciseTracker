@@ -2,6 +2,7 @@ package Project;
 
 import color.Color;
 
+import javax.swing.*;
 import java.io.Console;
 import java.sql.*;
 import java.util.*;
@@ -56,8 +57,7 @@ public class Menu {
                 selection = scanner.nextInt();
 
                 switch (selection) {
-                    case 1:
-                        totalPoints(connection);
+                    case 1: totalPoints();
                         break;
                     case 2:
                         goals();
@@ -82,18 +82,12 @@ public class Menu {
 
     public static void totalPoints(Connection connection) throws SQLException {
 
-        Statement readItemStatement = connection.createStatement();
-        String readItemsQuery = "SELECT SUM(pointsGranted) FROM tracker";
-        ResultSet rs = readItemStatement.executeQuery(readItemsQuery);
-
-        while (rs.next()) {
-            int numberOfID=rs.getInt("activityID");
-            String lastUpdate =rs.getString("lastupdate");
-            int pointGrandet =rs.getInt("pointsGranted");
-
-            System.out.println(numberOfID+"\n"+
-                    lastUpdate+"\n"+
-                    pointGrandet+"\n");
+        String getPoints = "SELECT SUM(pointsGranted) as pointsSum FROM tracker";
+        PreparedStatement = connection.prepareStatement(getPoints);
+        ResultSet rs = PreparedStatement.executeQuery();
+        if (rs.next()) {
+            String pointsSum =rs.getString("");
+            System.out.println(pointsSum+"\n");
 
         }
     }

@@ -4,8 +4,7 @@ import java.io.*;
 import java.sql.*;
 import java.util.Scanner;
 // TODO
-// SQL ERROR - Menu.StartExercises
-// check chooseExercise method and if it works
+// Points method - to see total sum of points
 // adjust/add System out print texts where applicable
 // method to tell user how many points were acquired during last session
 // startExercise - case 2 - finish session
