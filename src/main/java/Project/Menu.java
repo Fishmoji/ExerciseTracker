@@ -22,22 +22,15 @@ public class Menu {
             System.out.println(" ");
             System.out.println("[1] - Profile");
             System.out.println("[2] - Log exercise");
-            System.out.println("[0] - Exit");
+//            System.out.println("[0] - Exit");
 
             System.out.print("Insert selection: ");
             selection=Main.choiceFromTo(0,2);
 
             switch (selection) {
-                case 1:
-                    profileMenu();
-                    break;
-                case 2:
-                    startExercise();
-                    break;
-                case 0:
-                    break;
-                default:
-                    System.out.println("The selection was invalid!");
+                case 1 -> profileMenu();
+                case 2 -> startExercise();
+                default -> System.out.println("The selection was invalid!");
             }
         } while (selection != 0);
     }
@@ -50,9 +43,10 @@ public class Menu {
                 System.out.println("Select option: ");
                 System.out.println(" ");
                 System.out.println("1 - Points");
-                System.out.println("2 - Go to exercise menu");
+                System.out.println("2 - View goals");
+          //      System.out.println("3 - Set goals");
+                System.out.println("3 - Go to exercise menu");
 
-                //  System.out.println("2 - Goals");
                 System.out.println("0 - Exit");
 
 
@@ -61,12 +55,13 @@ public class Menu {
 
                 switch (selection) {
                     case 1 -> totalPoints(connection);
-                    case 2 -> startExercise();
+                    case 2 -> seeGoals(connection);
+                    case 3 -> startExercise();
                     case 0 -> mainMenu();
                     default -> System.out.println("Selection invalid");
                 }
             }
-            while (selection != 3);
+            while (selection != 4);
 
         } catch (SQLException e) {
             System.out.println(Color.ANSI_YELLOW+"SQL ERROR - Menu.ProfileMenu()"+ Color.ANSI_RESET);
@@ -88,11 +83,46 @@ public class Menu {
         System.out.println("\nTotal point count: " + sum);
     }
 
-  /*  public static void goals() {
-        return;
+ /*  public static void setGoals(Connection connection) throws SQLException {
+
+        Scanner scanner = new Scanner(System.in);
+       System.out.println("Enter point amount needed: ");
+       int pointthreshold = scanner.nextInt();
+
+       System.out.println("Enter goal statement: ");
+       String goalstatement = scanner.next();
+
+       String goal = ("INSERT INTO goals(pointthreshold, goalstatement) VALUES("+pointthreshold+","+goalstatement+")");
+       PreparedStatement preparedStatement = connection.prepareStatement(goal);
+       preparedStatement.setInt(2, pointthreshold);
+       preparedStatement.setString(3, goalstatement);
+
+
+       if(preparedStatement.executeUpdate() > 0){
+           System.out.println("A new user was inserted successfully");
+       } else {
+           System.out.println("Something went wrong");
+       }
     } */
 
-    public static void startExercise() {
+    public static void seeGoals(Connection connection) throws SQLException {
+        Statement st = connection.createStatement();
+        ResultSet res = st.executeQuery("SELECT * FROM goals");
+
+        while (res.next()) {
+            int goalID = res.getInt("goalID");
+            int pointthreshold = res.getInt("pointthreshold");
+            String goalstatement = res.getString("goalstatement");
+
+            System.out.println("############");
+            System.out.println("Id: " + goalID);
+            System.out.println("Points needed: " + pointthreshold);
+            System.out.println("Statement: " + goalstatement);
+        }
+
+
+    }
+        public static void startExercise() {
 
         try(Connection connection = DriverManager.getConnection(Main.jdbcURL, Main.username, Main.password)) {
             do {
@@ -108,18 +138,13 @@ public class Menu {
                 selection = scanner.nextInt();
 
                 switch (selection) {
-                    case 1:
+                    case 1 -> {
                         chooseExercise();
                         startExercise();
-                        break;
-                    case 2: totalPoints(connection);
-                        break;
-                    case 0:
-                        mainMenu();
-                        break;
-                    default:
-                        System.out.println("Selection invalid");
-                        break;
+                    }
+                    case 2 -> totalPoints(connection);
+                    case 0 -> mainMenu();
+                    default -> System.out.println("Selection invalid");
                 }
             }
             while (selection != 3);

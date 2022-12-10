@@ -32,6 +32,7 @@ public class Main {
 
         // dropTable(connection);
             createTable(connection);
+            createTableG(connection);
         }
         mainMenu();
 
@@ -62,6 +63,26 @@ public class Main {
                 "pointsGranted INT, "+
                 "PRIMARY KEY (activityID))";
         createTableStatement.execute(createTableQuery);
+
+    }
+    public static void createTableG(Connection con) throws SQLException{
+
+        Statement createTableStatement = con.createStatement();
+        String createTableQuery = "CREATE TABLE IF NOT EXISTS goals ("+
+                "goalID INT NOT NULL AUTO_INCREMENT, "+
+                "pointthreshold INT NOT NULL, "+
+                "goalstatement VARCHAR(150), "+
+                "PRIMARY KEY(goalID))";
+        createTableStatement.execute(createTableQuery);
+
+ /*       do {
+            try (Connection connection = DriverManager.getConnection(Main.jdbcURL, Main.username, Main.password)) {
+                Statement insertItemStatement = connection.createStatement();
+                String insertgoalcookie = "INSERT INTO goals (pointthreshold, goalstatement) VALUES (500, 'take a rest day')";
+                String insertgoalcheatmeal = "INSERT INTO goals (pointthreshold, goalstatement) VALUES (1000, 'have a cheat meal')";
+                String insertgoalsshopping = "INSERT INTO goals (pointthreshold, goalstatement) VALUES (2000, 'buy new work-out gear')";
+              */
+
     }
 
     // TODO correct validation
